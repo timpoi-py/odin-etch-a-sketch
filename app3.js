@@ -33,46 +33,9 @@ let mouseDown = false;
 window.onmousedown = () => mouseDown = true;
 window.onmouseup = () => mouseDown = false;
 
-
-
-class clickAndHold {
-
-    constructor(target, callback) {
-        this.target = target;
-        this.callback = callback;
-        this.isHeld = false;
-        this.activeHoldTimeoutId = null;
-
-        ['mousedown', 'touchstart'].forEach(type => {
-            this.target.addEventListener(type, this._onHoldStart.bind(this));
-        })
-
-        ['mouseup', 'mouseleave', 'mouseout', 'touchend', 'touchcancel'].forEach(type => {
-            this.target.addEventListener(type, this._onHoldEnd.bind(this));
-        })
-    }
-
-    _onHoldStart() {
-        this.isHeld = true;
-
-        this.activeHoldTimeoutId = setTimeout(() => {
-            if (this.isHeld) {
-                this.callback();
-            }
-        }, 400);
-    }
-
-    _onHoldEnd() {
-        this.isHeld = false;
-        clearTimeout(this.activeHoldTimeoutId);
-    } 
-
-    static apply(target,callback) {
-        new clickAndHold(target,callback);
-    }
-}
-
-
+let touchDown = false;
+document.ontouchstart = () => touchDown = true;
+document.ontouchend = () => touchDown = false;
 
 function changeSize(newSize) {
     size = newSize;
@@ -112,11 +75,21 @@ function changeColorInput() {
 
 function pickColor() {
     colorPick.forEach(color => {
-        color.onclick = (e) => {
+        color.addEventListener('click', (e) => {
             colorActive = e.target.value;
             mode = 'color';
             console.log(colorActive);
-        }
+        })
+    })
+}
+
+function pickColorForTouch() {
+    colorPick.forEach(color => {
+        color.addEventListener('touchstart', (e) => {
+            colorActive = e.target.value;
+            mode = 'color';
+            console.log(colorActive);
+        })
     })
 }
 
@@ -139,7 +112,7 @@ function generateRandomColor() {
     return randomText;
 }
 
-function modeSelected(e) {
+function modeSelectedMouse(e) {
     if (e.type === 'mouseover' && !mouseDown) return;
     if (mode == 'rainbow') {
         let randomColor = generateRandomColor();
@@ -153,13 +126,32 @@ function modeSelected(e) {
     }
 }
 
+function modeSelectedTouch(e) {
+    if (mode == 'rainbow') {
+        let randomColor = generateRandomColor();
+        colorActive = randomColor;
+        e.target.style.backgroundColor = colorActive;
+    } else if (mode == 'erase') {
+        colorActive = DEFAULT_DIVS_COLOR;
+        e.target.style.backgroundColor = colorActive;
+    } else if (mode == 'color') {
+        e.target.style.backgroundColor = colorActive;
+    }
+}
+
+
 
 range.addEventListener('input', (e) => {
     changeSize(e.target.value);
     changeTextSize(size);
 })
 
-range.addEventListener('mouseup', (e) => {
+range.addEventListener('click', (e) => {
+    deleteDivs();
+    putDivsInCanvas(size);
+})
+
+range.addEventListener('touchend', (e) => {
     deleteDivs();
     putDivsInCanvas(size);
 })
@@ -170,11 +162,17 @@ colors.addEventListener('mouseover', () => {
 })
 
 
+
+pickColorForTouch()
 resetBtn.onclick = reset;
 rainbowBtn.onclick = () => mode = 'rainbow';
 eraseBtn.onclick = () => mode = 'erase';
-canvas.onmouseover = (e) => modeSelected(e);
-
+resetBtn.ontouchstart = reset;
+rainbowBtn.ontouchstart = () => mode = 'rainbow';
+eraseBtn.ontouchstart = () => mode = 'erase';
+canvas.addEventListener('mouseover', (e) => modeSelectedMouse(e))
+canvas.addEventListener('mousedown', (e) => modeSelectedMouse(e))
+canvas.addEventListener('touchstart', (e) => modeSelectedTouch(e))
 
 
 window.onload = putDivsInCanvas(size);
