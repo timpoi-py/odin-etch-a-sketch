@@ -108,7 +108,11 @@ function reset(divsDimension,size){
 function coloringDivs(color) {
     let divs = document.querySelectorAll('.divs')
     divs.forEach(div => {
-    div.addEventListener('click', (e) => e.target.style.backgroundColor = color);
+    div.addEventListener('mouseover', (e) => {
+        e.target.style.backgroundColor = color;
+        
+
+    });
 })
 }
 
@@ -116,7 +120,7 @@ function coloringDivs(color) {
 
 addDefaultDivs(size, DEFAULT_DIVS_DIMENSION)
 
-range.addEventListener('click', (e) => {
+range.addEventListener('mouseup', (e) => {
     changeDivsDimensions(canvasSize, e.target.value);
     changingDivs(divsDimension,size);
 })
@@ -174,8 +178,11 @@ colorPick3.addEventListener('click', (e) => {
 
 resetBtn.addEventListener('click', reset);
 
-canvas.addEventListener('mouseover', () => coloringDivs(colorActive))
+canvas.addEventListener('mouseover', () => {
+    coloringDivs(colorActive)
+})
 
+// window.onclick = (e) => console.log(e.type);
 // setInterval(() => {
 //     console.log(colorActive);
 // }, 1000);

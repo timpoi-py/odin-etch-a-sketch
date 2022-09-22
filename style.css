@@ -153,14 +153,17 @@ input {
     width: 650px;
     height: 650px;
     background-color: whitesmoke;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
 }
 
 .divs {
     background-color: #FFFFF9;
     border-bottom: 0.5px solid rgb(0 0 0 / 0.1);
     border-right: 0.5px solid rgb(0 0 0 / 0.1);
+}
+
+.active {
+    scale: 1.1;
 }
 
 footer {
