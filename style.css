@@ -157,6 +157,12 @@ input {
     flex-wrap: wrap;
 }
 
+.divs {
+    background-color: #FFFFF9;
+    border-bottom: 0.5px solid rgb(0 0 0 / 0.1);
+    border-right: 0.5px solid rgb(0 0 0 / 0.1);
+}
+
 footer {
 
     display: flex;
@@ -167,6 +173,15 @@ footer {
     cursor: pointer;
     width: 100%;
     padding: 0.5rem
+}
+
+footer a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    text-decoration: none;
+    color: black;
 }
 
 .icon {
