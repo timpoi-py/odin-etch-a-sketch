@@ -156,14 +156,19 @@ range.addEventListener('touchend', (e) => {
     putDivsInCanvas(size);
 })
 
-colors.addEventListener('mouseover', () => {
+colors.addEventListener('click', () => {
     changeColorInput()
     pickColor()
 })
 
 
+colors.addEventListener('click', () => {
+    changeColorInput()
+    pickColorForTouch()
+})
 
-pickColorForTouch()
+
+
 resetBtn.onclick = reset;
 rainbowBtn.onclick = () => mode = 'rainbow';
 eraseBtn.onclick = () => mode = 'erase';
