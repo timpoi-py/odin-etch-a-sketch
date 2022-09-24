@@ -162,7 +162,7 @@ colors.addEventListener('click', () => {
 })
 
 
-colors.addEventListener('click', () => {
+colors.addEventListener('touchstart', () => {
     changeColorInput()
     pickColorForTouch()
 })
