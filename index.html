@@ -1,47 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
     <script defer src="./app3.js"></script>
     <title>TPOI Etch-a-Sketch</title>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <h1>Etch-a-Sketch</h1>
+      <h1>Etch-a-Sketch</h1>
     </header>
     <main class="main-canvas">
-        <div class="controls">
-            
-            <div class="canvas-size">
-                <p><span class="size-text">20</span> x <span class="size-text">20</span></p>
-                <input type="range" name="canvas-size" id="canvas-range" value="20" min="1" max="64" step="1">
-                <label for="canvas-size">Canvas Size</label>
-            </div>
-            <div class="colors">
-                <input type="color" name="color" id="color-pick-1" class="color-pick" value="#000000">
-                <input type="color" name="color" id="color-pick-2" class="color-pick" value="#0000FF">
-                <input type="color" name="color" id="color-pick-3" class="color-pick" value="#FFF000">
-            </div>
-            <div class="btns">
-                <input type="button" value="Rainbow" id="rainbow">
-                <input type="button" value="Erase" id="erase">
-                <input type="button" value="Reset" id="reset">
-            </div>
-
+      <div class="controls">
+        <div class="canvas-size">
+          <p>
+            <span class="size-text">20</span> x
+            <span class="size-text">20</span>
+          </p>
+          <input
+            type="range"
+            name="canvas-size"
+            id="canvas-range"
+            value="20"
+            min="1"
+            max="64"
+            step="1"
+          />
+          <label for="canvas-size">Canvas Size</label>
         </div>
-        <div class="canvas" id="canvas"></div>
+        <div class="colors">
+          <input
+            type="color"
+            name="color"
+            id="color-pick-1"
+            class="color-pick"
+            value="#000000"
+          />
+          <input
+            type="color"
+            name="color"
+            id="color-pick-2"
+            class="color-pick"
+            value="#0000FF"
+          />
+          <input
+            type="color"
+            name="color"
+            id="color-pick-3"
+            class="color-pick"
+            value="#FFF000"
+          />
+        </div>
+        <div class="btns">
+          <input type="button" value="Rainbow" id="rainbow" />
+          <input type="button" value="Erase" id="erase" />
+          <input type="button" value="Reset" id="reset" />
+        </div>
+      </div>
+      <div class="canvas" id="canvas"></div>
     </main>
     <footer>
-        <a href="https://www.github.com/timpoi-py">
-            <p>Copyright &copy; 2022 timpoi-py</p>
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2.2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <!-- <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> -->
-                <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"></path>
-            </svg>
-        </a>
+      <a href="https://www.github.com/timpoi-py">
+        <p>Copyright &copy; 2022 timpoi-py</p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="icon icon-tabler icon-tabler-brand-github"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          stroke-width="2.2"
+          stroke="currentColor"
+          fill="none"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <!-- <path stroke="none" d="M0 0h24v24H0z" fill="none"></path> -->
+          <path
+            d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5"
+          ></path>
+        </svg>
+      </a>
     </footer>
-</body>
+  </body>
 </html>
